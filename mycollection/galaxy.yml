@@ -1,0 +1,9 @@
+---
+namespace: example
+name: mycollection
+version: 0.0.0
+description: Example Role
+readme: README.md
+authors:
+ - me
+# repository: https://github.com/my/repo
