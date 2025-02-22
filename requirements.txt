@@ -1,0 +1,4 @@
+ansible-core>=2.9
+ansible-lint>=25.1
+yamllint>=1.35
+pre_commit>=4.1.0

@@ -3,4 +3,4 @@
   hosts: localhost
   gather_facts: false
   roles:
-    - role: test01
+    - role: yamause.test.test01

@@ -5,5 +5,5 @@ version: 0.0.0
 description: Example Role
 readme: README.md
 authors:
- - me
+ - yamause
 repository: https://github.com/yamause/test-ansible-collection

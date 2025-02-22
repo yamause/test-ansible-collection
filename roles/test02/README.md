@@ -1,38 +1,25 @@
-Role Name
-=========
+# ロール名
 
-A brief description of the role goes here.
+このロールは、test02に関連するタスクを実行するためのものです。
 
-Requirements
-------------
+## 要件
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+このロールには特定の要件はありません。
 
-Role Variables
---------------
+## ロール変数
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+このロールには設定可能な変数はありません。
 
-Dependencies
-------------
+## 依存関係
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+他のロールへの依存関係はありません。
 
-Example Playbook
-----------------
+## 使用例
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+このロールの使用例：
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
-
-License
--------
-
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+```yaml
+- hosts: localhost
+    roles:
+         - yamause.test.test02
+```
