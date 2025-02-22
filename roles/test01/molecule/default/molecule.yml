@@ -1,0 +1,7 @@
+---
+driver:
+  name: docker
+platforms:
+  - name: debian
+    image: debian:latest
+    pre_build_image: true

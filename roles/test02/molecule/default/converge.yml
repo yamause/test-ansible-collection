@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Include the role
+      ansible.builtin.import_role:
+        name: yamause.test.test02
