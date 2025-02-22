@@ -1,0 +1,5 @@
+.vscode
+.ansible
+.venv
+venv
+env

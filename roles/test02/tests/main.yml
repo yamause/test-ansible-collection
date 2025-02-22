@@ -1,0 +1,6 @@
+---
+- name: Debug message from test02
+  hosts: localhost
+  gather_facts: false
+  roles:
+    - role: test02

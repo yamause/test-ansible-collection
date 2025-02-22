@@ -1,0 +1,4 @@
+---
+- name: Debug message from test02
+  ansible.builtin.debug:
+    msg: "Hello from test02"

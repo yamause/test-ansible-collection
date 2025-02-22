@@ -6,7 +6,5 @@ collections:
     source: ./mycollection
     # source: https://example.com/my/repo.git
 
-roles:
-  - name: example.mycollection
-    version: 0.0.0
-    src: git+file:///home/yamause/Dev/role_test/mycollection
+# roles:
+#   - src: git+file://home/yamause/Dev/role_test/mycollection

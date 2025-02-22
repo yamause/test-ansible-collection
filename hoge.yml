@@ -1,6 +1,0 @@
----
-- name: Test module_a
-  hosts: localhost
-  gather_facts: false
-  roles:
-    - role: example.mycollection.module_a
