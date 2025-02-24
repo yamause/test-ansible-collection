@@ -3,5 +3,10 @@
   hosts: localhost
   tasks:
     - name: Use custom module to output a value
-      my_custom_module:
+      yamause.test.say_yamause:
         input_value: "Hello, Ansible!"
+      register: result
+
+    - name: Print the result
+      ansible.builtin.debug:
+        var: result
