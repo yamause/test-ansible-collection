@@ -1,0 +1,7 @@
+---
+- name: Test custom module
+  hosts: localhost
+  tasks:
+    - name: Use custom module to output a value
+      my_custom_module:
+        input_value: "Hello, Ansible!"
