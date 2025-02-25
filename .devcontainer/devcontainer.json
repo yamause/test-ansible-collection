@@ -5,6 +5,9 @@
     "ghcr.io/devcontainers/features/github-cli:1": {},
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
+  "containerEnv": {
+    "GH_TOKEN" : "${localEnv:GH_TOKEN}"
+  },
   "onCreateCommand": "make install",
   "customizations": {
     "vscode": {
