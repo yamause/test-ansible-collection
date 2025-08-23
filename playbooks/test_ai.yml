@@ -1,0 +1,29 @@
+---
+- name: Test Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Get Memory
+      ansible.builtin.command:
+        cmd: cat /proc/meminfo
+      register: memory_info
+      changed_when: false
+
+    - name: Use custom module to output a value
+      yamause.test.ai:
+        text: "メモリーの使用率についてMarkdown形式でレポートを作成してください。会話は不要です。あなたはAPIのようにレポートの結果だけを出力してください。 {{ memory_info.stdout }}"
+        # api_key: YOUR_API_KEY_HERE or set via environment variable AI_API_KEY
+        # model: YOUR_MODEL_HERE or set via environment variable AI_MODEL
+      register: result
+
+    - name: Print the result
+      ansible.builtin.debug:
+        msg: "{{ result.message }}"
+      when: result.message is defined
+
+    - name: Output report
+      ansible.builtin.copy:
+        content: "{{ result.message }}"
+        dest: ../ai_report.md
+        mode: "0644"
+      when: result.message is defined
