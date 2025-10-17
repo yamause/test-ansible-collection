@@ -10,7 +10,7 @@
       changed_when: false
 
     - name: Use custom module to output a value
-      yamause.test.ai:
+      ai:
         text: "メモリーの使用率についてMarkdown形式でレポートを作成してください。会話は不要です。あなたはAPIのようにレポートの結果だけを出力してください。 {{ memory_info.stdout }}"
         # api_key: YOUR_API_KEY_HERE or set via environment variable AI_API_KEY
         # model: YOUR_MODEL_HERE or set via environment variable AI_MODEL

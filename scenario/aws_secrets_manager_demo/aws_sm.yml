@@ -1,0 +1,38 @@
+---
+- name: AWS Secrets Manager Demo Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Add string to AWS Secrets Manager
+      community.aws.secretsmanager_secret:
+        name: ansible-aws-secrets-manager-demo
+        state: present
+        secret_type: 'string'
+        # Key/Valで保存するには文字列で正しいJSON形式で渡す必要がある。JSON形式でない場合は文字列として保存される
+        secret: '{"username": "admin","password": "P@ssw0rd!"}'
+        # または下記のようにYAML形式で渡すことも可能。内容は上のsecretと同じ
+        # json_secret:
+        #   username: admin
+        #   password: P@ssw0rd!
+        tags:
+          CreatedBy: Ansible
+
+    - name: Display the retrieved secret
+      ansible.builtin.debug:
+        msg: "The retrieved secret is: {{ lookup('amazon.aws.aws_secret', 'ansible-aws-secrets-manager-demo') }}"
+
+    - name: Retrieve the secret from AWS Secrets Manager
+      community.aws.secretsmanager_secret:
+        name: ansible-aws-secrets-manager-demo
+        state: absent  # これだけで削除できる
+
+    - name: Display the retrieved secret after deletion
+      ansible.builtin.debug:
+        msg: "The retrieved secret is: {{ lookup('amazon.aws.aws_secret', 'ansible-aws-secrets-manager-demo', on_deleted='warn') }}"
+      # on_deletedオプションを指定することで、削除されたシークレットを参照した場合の挙動を制御できる
+      # 'error'：エラーメッセージを表示し、タスクを失敗させる（デフォルト）
+      # 'warn'：警告メッセージを表示し、空の文字列を返す
+      # 'ignore'：何も表示せず、空の文字列を返す
+
+      # on_denied オプションもあり、アクセス拒否された場合の挙動を制御できる
+      # on_missing オプションもあり、シークレットが存在しない場合の挙動を制御できる
