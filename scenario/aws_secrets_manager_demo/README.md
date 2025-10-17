@@ -23,8 +23,6 @@ Secrets Manager の検証
         - `aws_session_token` or `session_token`
 
 
-
-
 ## Secrets の保存・更新・削除
 
 [community.aws.secretsmanager_secret module](https://docs.ansible.com/ansible/latest/collections/community/aws/secretsmanager_secret_module.html)
@@ -69,4 +67,23 @@ Secrets Manager の検証
 
     # on_denied オプションもあり、アクセス拒否された場合の挙動を制御できる
     # on_missing オプションもあり、シークレットが存在しない場合の挙動を制御できる
+```
+
+## 利用例
+
+インベントリファイル内でもlookupプラグインを使用してシークレットを取得できる
+ログイン情報をAWS Secrets Managerで一元管理し、Ansibleのインベントリファイルから参照するユースケースなどに便利
+
+```yaml
+all:
+  hosts:
+    localhost:
+      ansible_connection: local
+      message: "{{ lookup('amazon.aws.aws_secret', 'ansible-aws-secrets-manager-demo', on_deleted='warn') }}"
+```
+
+```yaml
+- name: Display Host Vars message
+  ansible.builtin.debug:
+    msg: "Username: {{ (message | from_json).username }}"
 ```

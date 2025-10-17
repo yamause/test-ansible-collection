@@ -21,6 +21,12 @@
       ansible.builtin.debug:
         msg: "The retrieved secret is: {{ lookup('amazon.aws.aws_secret', 'ansible-aws-secrets-manager-demo') }}"
 
+    # インベントリファイル内でもlookupプラグインを使用してシークレットを取得できる
+    # ログイン情報をAWS Secrets Managerで一元管理し、Ansibleのインベントリファイルから参照するユースケースなどに便利
+    - name: Display Host Vars message
+      ansible.builtin.debug:
+        msg: "Username: {{ (message | from_json).username }}"
+
     - name: Retrieve the secret from AWS Secrets Manager
       community.aws.secretsmanager_secret:
         name: ansible-aws-secrets-manager-demo
